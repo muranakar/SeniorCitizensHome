@@ -63,12 +63,25 @@ class SettingViewController: UIViewController {
 }
 
 extension SettingViewController: UIPickerViewDelegate {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        viewForRow row: Int,
+        forComponent component: Int,
+        reusing view: UIView?
+    ) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        label.text = pickerViewItemsOfFilterServiceType[row].string
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         pickerViewItemsOfFilterServiceType[row].string
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let filterServiceType = FilterServiceType.allCases.filter { $0.string == pickerViewItemsOfFilterServiceType[row].string }.first!
+        let filterServiceType =
+        FilterServiceType.allCases.filter { $0.string == pickerViewItemsOfFilterServiceType[row].string }.first!
         filterServiceTypeRepository.save(filterServiceType: filterServiceType)
     }
 }

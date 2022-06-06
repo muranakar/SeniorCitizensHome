@@ -20,6 +20,7 @@ class DetailSearchViewController: UIViewController {
     @IBOutlet weak private var officeURLLabel: UILabel!
     @IBOutlet weak private var corporateURLLabel: UILabel!
     @IBOutlet weak private var adressLabel: UILabel!
+    @IBOutlet weak private var serviceTypeLabel: UILabel!
 
     @IBOutlet weak private var officeNameButton: UIButton!
     @IBOutlet weak private var officeTelButton: UIButton!
@@ -51,6 +52,7 @@ class DetailSearchViewController: UIViewController {
         officeURLLabel.text = facilityInformation.officeURL
         corporateURLLabel.text = facilityInformation.corporateURL
         adressLabel.text = facilityInformation.address
+        serviceTypeLabel.text = facilityInformation.serviceType
     }
 
     private func configureButton() {

@@ -11,7 +11,7 @@
         <!--設定-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SettingViewController" customModule="TrainingAndEmploymentServices" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="SettingViewController" customModule="SeniorCitizensHome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="SHS-K1-nIt"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLb-Vi-LaZ" customClass="FunctionSelectionItemButton" customModule="TrainingAndEmploymentServices">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLb-Vi-LaZ" customClass="FunctionSelectionItemButton" customModule="SeniorCitizensHome" customModuleProvider="target">
                                 <rect key="frame" x="132" y="344.5" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="NuH-37-Y4y"/>
@@ -44,7 +44,27 @@
                                     <action selector="configureCoreLocation:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aLd-Tg-lzr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YW0-ke-dZT" customClass="RequestViaTwitterButton" customModule="TrainingAndEmploymentServices">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="特）＝　特定施設入居者生活介護" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXL-Py-dNJ">
+                                <rect key="frame" x="77" y="414.5" width="260" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="dED-ie-KNt"/>
+                                    <constraint firstAttribute="height" constant="21" id="dqr-J3-fM0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地）＝　地域密着型特定施設入居者生活介護" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIl-2n-DPP">
+                                <rect key="frame" x="33.5" y="455.5" width="347" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="lfs-cE-seY"/>
+                                    <constraint firstAttribute="width" constant="347" id="zkG-Rt-iaf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YW0-ke-dZT" customClass="RequestViaTwitterButton" customModule="SeniorCitizensHome" customModuleProvider="target">
                                 <rect key="frame" x="30" y="673" width="140" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="FWv-x0-LDa"/>
@@ -68,10 +88,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YUq-6e-GZK" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="25k-kL-Eay"/>
+                            <constraint firstItem="sIl-2n-DPP" firstAttribute="top" secondItem="RXL-Py-dNJ" secondAttribute="bottom" constant="20" id="6gg-gs-STL"/>
+                            <constraint firstItem="RXL-Py-dNJ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="93h-NJ-61e"/>
+                            <constraint firstItem="sIl-2n-DPP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="CLE-Gl-gcm"/>
                             <constraint firstItem="qXb-gY-pQp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Cq4-i8-fIl"/>
                             <constraint firstItem="hLb-Vi-LaZ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Hsn-Tt-ntt"/>
                             <constraint firstItem="qXb-gY-pQp" firstAttribute="top" secondItem="YUq-6e-GZK" secondAttribute="bottom" constant="20" id="KbE-SY-hAH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YUq-6e-GZK" secondAttribute="trailing" constant="10" id="Kcb-Kf-PRu"/>
+                            <constraint firstItem="RXL-Py-dNJ" firstAttribute="top" secondItem="hLb-Vi-LaZ" secondAttribute="bottom" constant="20" id="N8L-fl-RJe"/>
                             <constraint firstItem="eoJ-n8-iB4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QmN-Vk-RYi"/>
                             <constraint firstItem="hLb-Vi-LaZ" firstAttribute="top" secondItem="qXb-gY-pQp" secondAttribute="bottom" constant="50" id="SKv-E2-mbp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="YW0-ke-dZT" secondAttribute="bottom" constant="80" id="ikF-At-GuY"/>
