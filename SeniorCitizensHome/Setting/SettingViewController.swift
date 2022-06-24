@@ -31,6 +31,12 @@ class SettingViewController: UIViewController {
     @IBAction private func jumpToTwitter(_ sender: Any) {
         jumpToTwitterInformation()
     }
+    @IBAction private func shareTwitter(_ sender: Any) {
+        shareOnTwitter()
+    }
+    @IBAction private func shareLine(_ sender: Any) {
+        shareOnLine()
+    }
 
     private func selectRowFilterServiceTypePickerView() {
         guard let loadedFilterServiceType = filterServiceTypeRepository.load() else { return }
@@ -59,6 +65,60 @@ class SettingViewController: UIViewController {
 
         // 広告読み込み
         bannerView.load(GADRequest())
+    }
+
+    func shareOnTwitter() {
+        // シェアするテキストを作成
+        let text = "全国の老人ホームの検索が可能！"
+        // swiftlint:disable:next line_length
+        let hashTag = "#高齢者　#身体障害 #認知症 #老人ホーム  #特養  #介護保険 #医療保険 #在宅 #介護 #医療\nhttps://apps.apple.com/jp/app/%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0map-%E5%85%A8%E5%9B%BD%E3%81%AE%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%92%E6%A4%9C%E7%B4%A2/id1628213256"
+        let completedText = text + "\n" + hashTag
+
+        // 作成したテキストをエンコード
+        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        // エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+        if let encodedText = encodedText,
+           let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url)
+        }
+    }
+
+    func shareOnLine() {
+        let urlscheme: String = "https://line.me/R/share?text="
+        // swiftlint:disable:next line_length
+        let message = "全国の老人ホームの検索が可能！#高齢者　#身体障害 #認知症 #老人ホーム  #特養  #介護保険 #医療保険 #在宅 #介護 #医療\nhttps://apps.apple.com/jp/app/%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0map-%E5%85%A8%E5%9B%BD%E3%81%AE%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%92%E6%A4%9C%E7%B4%A2/id1628213256"
+
+        // line:/msg/text/(メッセージ)
+        let urlstring = urlscheme + "/" + message
+
+        // URLエンコード
+        guard let  encodedURL =
+                urlstring.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
+            return
+        }
+
+        // URL作成
+        guard let url = URL(string: encodedURL) else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (succes) in
+                    //  LINEアプリ表示成功
+                })
+            }else{
+                UIApplication.shared.openURL(url)
+            }
+        }else {
+            // LINEアプリが無い場合
+            let alertController = UIAlertController(title: "エラー",
+                                                    message: "LINEがインストールされていません",
+                                                    preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+            present(alertController,animated: true,completion: nil)
+        }
     }
 }
 

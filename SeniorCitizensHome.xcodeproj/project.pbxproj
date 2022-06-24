@@ -10,6 +10,7 @@
 		8D52772A56070B2D525ECE2F /* Pods_SeniorCitizensHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C34FB5E4E5F673857AB02B /* Pods_SeniorCitizensHome.framework */; };
 		B2381DF7284433D100A9A9C7 /* GoogleAdID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2381DF6284433D100A9A9C7 /* GoogleAdID.swift */; };
 		B2381DFB2844414000A9A9C7 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2381DFA2844414000A9A9C7 /* SearchUseCase.swift */; };
+		B24D14732865D20500127B72 /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24D14722865D20500127B72 /* ReviewRepository.swift */; };
 		B25355662844F98B003F44C7 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25355652844F98B003F44C7 /* SearchTableViewCell.swift */; };
 		B28EE172284BF6B000180139 /* UseCaseCsvConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28EE171284BF6B000180139 /* UseCaseCsvConversionTests.swift */; };
 		B28EE17B284C053F00180139 /* CSVConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28EE17A284C053F00180139 /* CSVConversion.swift */; };
@@ -78,6 +79,7 @@
 		AE404B96B74696F554C5D796 /* Pods-ChildDevelopmentSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChildDevelopmentSupport.release.xcconfig"; path = "Target Support Files/Pods-ChildDevelopmentSupport/Pods-ChildDevelopmentSupport.release.xcconfig"; sourceTree = "<group>"; };
 		B2381DF6284433D100A9A9C7 /* GoogleAdID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdID.swift; sourceTree = "<group>"; };
 		B2381DFA2844414000A9A9C7 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		B24D14722865D20500127B72 /* ReviewRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewRepository.swift; sourceTree = "<group>"; };
 		B25355652844F98B003F44C7 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		B28EE16F284BF6B000180139 /* SeniorCitizensHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeniorCitizensHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28EE171284BF6B000180139 /* UseCaseCsvConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseCsvConversionTests.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				B2A945E7282C6C5A0001B737 /* FacilityInformation.swift */,
 				B2981493282DD87A00A3D0C3 /* PrefectureRepository.swift */,
 				B28EE17C284C0D3300180139 /* FilterServiceTypeRepository.swift */,
+				B24D14722865D20500127B72 /* ReviewRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				B2981494282DD87A00A3D0C3 /* PrefectureRepository.swift in Sources */,
 				B298148E282DCAB500A3D0C3 /* DecoderFacliityInformation.swift in Sources */,
 				B2381DF7284433D100A9A9C7 /* GoogleAdID.swift in Sources */,
+				B24D14732865D20500127B72 /* ReviewRepository.swift in Sources */,
 				B2B01A462848204E00B820AC /* DetailSearchViewController.swift in Sources */,
 				B2A945D2282C6B810001B737 /* AppDelegate.swift in Sources */,
 				B294DF912833103E00C7C809 /* PasteboardFormatterFacilityInformation.swift in Sources */,
@@ -801,7 +805,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.muranaka.SeniorCitizensHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -834,7 +838,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.muranaka.SeniorCitizensHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
