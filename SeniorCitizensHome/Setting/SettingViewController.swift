@@ -37,6 +37,9 @@ class SettingViewController: UIViewController {
     @IBAction private func shareLine(_ sender: Any) {
         shareOnLine()
     }
+    @IBAction private func shareOtherApp(_ sender: Any) {
+           shareOnOtherApp()
+       }
 
     private func selectRowFilterServiceTypePickerView() {
         guard let loadedFilterServiceType = filterServiceTypeRepository.load() else { return }
@@ -120,6 +123,12 @@ class SettingViewController: UIViewController {
             present(alertController,animated: true,completion: nil)
         }
     }
+    private func shareOnOtherApp() {
+            let url = URL(string: "https://sites.google.com/view/muranakar")
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.open(url!)
+            }
+        }
 }
 
 extension SettingViewController: UIPickerViewDelegate {
