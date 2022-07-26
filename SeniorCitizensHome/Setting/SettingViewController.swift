@@ -40,6 +40,13 @@ class SettingViewController: UIViewController {
     @IBAction private func shareOtherApp(_ sender: Any) {
            shareOnOtherApp()
        }
+    @IBAction private func review(_ sender: Any) {
+        let urlString = URL(string: "https://apps.apple.com/app/id1628213256?action=write-review")
+        guard let writeReviewURL = urlString else {
+            fatalError("Expected a valid URL")
+        }
+        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+    }
 
     private func selectRowFilterServiceTypePickerView() {
         guard let loadedFilterServiceType = filterServiceTypeRepository.load() else { return }
@@ -74,7 +81,7 @@ class SettingViewController: UIViewController {
         // シェアするテキストを作成
         let text = "全国の老人ホームの検索が可能！"
         // swiftlint:disable:next line_length
-        let hashTag = "#高齢者　#身体障害 #認知症 #老人ホーム  #特養  #介護保険 #医療保険 #在宅 #介護 #医療\nhttps://apps.apple.com/jp/app/%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0map-%E5%85%A8%E5%9B%BD%E3%81%AE%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%92%E6%A4%9C%E7%B4%A2/id1628213256"
+        let hashTag = "#高齢者　#身体障害 #認知症 #老人ホーム  #特養  #介護保険 #医療保険 #在宅 #介護 #医療\nhttps://apps.apple.com/jp/app/id1628213256"
         let completedText = text + "\n" + hashTag
 
         // 作成したテキストをエンコード
@@ -90,7 +97,7 @@ class SettingViewController: UIViewController {
     func shareOnLine() {
         let urlscheme: String = "https://line.me/R/share?text="
         // swiftlint:disable:next line_length
-        let message = "全国の老人ホームの検索が可能！#高齢者　#身体障害 #認知症 #老人ホーム  #特養  #介護保険 #医療保険 #在宅 #介護 #医療\nhttps://apps.apple.com/jp/app/%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0map-%E5%85%A8%E5%9B%BD%E3%81%AE%E8%80%81%E4%BA%BA%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%92%E6%A4%9C%E7%B4%A2/id1628213256"
+        let message = "全国の老人ホームの検索が可能！#高齢者　#身体障害 #認知症 #老人ホーム  #特養  #介護保険 #医療保険 #在宅 #介護 #医療\nhttps://apps.apple.com/jp/app/id1628213256"
 
         // line:/msg/text/(メッセージ)
         let urlstring = urlscheme + "/" + message

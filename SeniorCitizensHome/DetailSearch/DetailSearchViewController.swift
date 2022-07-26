@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import GoogleMobileAds
 // 逆ジオコーディングのために、import
 
 class DetailSearchViewController: UIViewController {
@@ -31,6 +32,8 @@ class DetailSearchViewController: UIViewController {
 
     private var transitionSource: TransitionSource
     private var facilityInformation: FacilityInformation
+    // 広告
+    private var interstitial: GADInterstitialAd?
     required init?(coder: NSCoder, facilityInformation: FacilityInformation, transitionSource: TransitionSource) {
         self.transitionSource = transitionSource
         self.facilityInformation = facilityInformation
@@ -44,6 +47,7 @@ class DetailSearchViewController: UIViewController {
         super.viewDidLoad()
         configureLabel()
         configureButton()
+        configureInterstitialAd()
     }
     private func configureLabel() {
         officeNameLabel.text = facilityInformation.officeName
@@ -64,11 +68,13 @@ class DetailSearchViewController: UIViewController {
         adressButton.isEnabled = facilityInformation.address  != ""
     }
     @IBAction private func back(_ sender: Any) {
-        switch transitionSource {
-        case .mapVeiwController:
-            performSegue(withIdentifier: "backToMap", sender: nil)
-        case .searchViewController:
-            performSegue(withIdentifier: "backToSearch", sender: nil)
+        showGoogleIntitialAdOnceInThreeTimes {
+            switch transitionSource {
+            case .mapVeiwController:
+                performSegue(withIdentifier: "backToMap", sender: nil)
+            case .searchViewController:
+                performSegue(withIdentifier: "backToSearch", sender: nil)
+            }
         }
     }
     @IBAction private func callTelephone(_ sender: Any) {
@@ -118,6 +124,34 @@ class DetailSearchViewController: UIViewController {
         // コピーが完了した　とアラート表示
         present(UIAlertController.copyingCompletedFacilityInformation(message: message), animated: true)
     }
+    // MARK: - 広告関係のメソッド
+    private func configureInterstitialAd() {
+        // インタースティシャル広告
+        let request = GADRequest()
+        GADInterstitialAd.load(
+            withAdUnitID: GoogleAdID.interstitialID,
+            request: request,
+            completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
+            }
+        )
+    }
+
+    //　Google広告を3回に表示するメソッド
+    func showGoogleIntitialAdOnceInThreeTimes(segue:() -> Void) {
+        // 広告を3回に、１回表示する処理
+        let adNum = GADRepository.processAfterAddGADNumPulsOneAndSaveGADNum()
+        if adNum % 3 == 0 && interstitial != nil {
+            interstitial?.present(fromRootViewController: self)
+        } else {
+            segue()
+        }
+    }
 }
 
 extension DetailSearchViewController {
@@ -136,5 +170,26 @@ extension DetailSearchViewController {
 
     // swiftlint:disable:next private_action
     @IBAction func backToDetailSearchViewController(segue: UIStoryboardSegue) {
+    }
+}
+
+extension DetailSearchViewController: GADFullScreenContentDelegate {
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        switch transitionSource {
+        case .mapVeiwController:
+            performSegue(withIdentifier: "backToMap", sender: nil)
+        case .searchViewController:
+            performSegue(withIdentifier: "backToSearch", sender: nil)
+        }
+    }
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        switch transitionSource {
+        case .mapVeiwController:
+            performSegue(withIdentifier: "backToMap", sender: nil)
+        case .searchViewController:
+            performSegue(withIdentifier: "backToSearch", sender: nil)
+        }
     }
 }
